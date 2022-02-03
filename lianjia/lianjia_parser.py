@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-import url_holder
+from lianjia import url_holder
 
 # 获取每一页中的二手房主页url
 def parse_sellListContent(html):
@@ -11,6 +11,7 @@ def parse_sellListContent(html):
         house_li_arr = sellListContent.find_all("li", class_="LOGCLICKDATA")
         for li in house_li_arr:
             print(li.a.attrs['href'])
+            url_holder.enqueue_ershoufang_detail_url(li.a.attrs['href'])
 
 # 获取链接二手房所有列表页的URL
 def generate_page_url(total_page_num):
