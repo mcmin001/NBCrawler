@@ -18,6 +18,10 @@ class CrawlerTest(unittest.TestCase):
         for url in lianjia_parser.generate_page_url(100):
             print("page url is " + url)
 
+    def test_house_detail(self):
+        page_content = httputil.getwebpage("https://wh.lianjia.com/ershoufang/104107909556.html")
+        lianjia_parser.parse_house_info(page_content)
+
 
 if __name__ == '__main__':
     # 运行所有的测试用例
